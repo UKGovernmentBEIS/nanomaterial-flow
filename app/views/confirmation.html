@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="./confirmation" method="post" novalidate>
+
+        {% set question = 'Was the EU notified about ' + data['nanomaterial-name'] + ' before 1 February 2020?' %}
+
+        {{ govukPanel({
+          titleText: "You’ve told us about " + data['nanomaterial-name'],
+          html: "Your reference number<br><strong>HDJ2123F</strong>"
+        }) }}
+
+        <p>
+          <a href='index.html'>
+            Notified products
+          </a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

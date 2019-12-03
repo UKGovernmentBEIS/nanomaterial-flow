@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "./upload-file.html"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="./confirmation" method="post" novalidate>
+
+        <h1 class="govuk-heading-xl">
+          Check your answers
+        </h1>
+
+          {% set name = data['nanomaterial-name'] %}
+
+          {% set notifiedInEu = data['eu-notification-date'] %}
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+              {
+                key: {
+                  text: "Name"
+                },
+                value: {
+                  text: name
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Notified in EU"
+                },
+                value: {
+                  text: notifiedInEu
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "if or when the product was notified in the EU"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "PDF file"
+                },
+                value: {
+                  html: 'PDF file'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "contact details"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+        <h2 class="govuk-heading-m">
+          Now send your nanomaterial notification
+        </h2>
+        <p>
+          Your submission will be reviewed by the Office for Product Safety and Standards.
+        </p>
+
+
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
