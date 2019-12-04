@@ -14,13 +14,17 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">What is the name of the nanomaterial?</h1>
+
       <form action="./notified-to-eu" method="post" novalidate>
         {{ govukInput({
           label: {
-            text: "What is the name of the nanomaterial?",
-            classes: "govuk-label--xl",
-            isPageHeading: true
+            text: "Nanomaterial name"
           },
+          hint: {
+    text: "The international nonproprietary name (INN) or international nomenclature of cosmetic ingredients (INCI) name."
+  },
           id: "nanomaterial-name",
           name: "nanomaterial-name"
         }) }}
